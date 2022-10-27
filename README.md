@@ -1,5 +1,5 @@
-JPA e Hibernate
-SpringCore
-SpringBoot
-JSP e ServletAPI
-SpringSecurity
+JPA e Hibernate,
+SpringCore,
+SpringBoot,
+JSP e ServletAPI,
+SpringSecurity.
