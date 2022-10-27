@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>Esercizio</display-name>
+
+	<servlet>
+		<servlet-name>Weather</servlet-name>
+		<servlet-class>webcert.ch07.examp0701.WeatherParams</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Weather</servlet-name>
+		<url-pattern>/Weather</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Weather2</servlet-name>
+		<servlet-class>webcert.ch07.examp0701.WeatherParams2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Weather2</servlet-name>
+		<url-pattern>/Weather2</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>MicroPaymentFilter</filter-name>
+		<filter-class>webcert.ch07.examp0701.MicroPaymentFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>MicroPaymentFilter</filter-name>
+		<servlet-name>Weather2</servlet-name>
+	</filter-mapping>
+	
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
+</web-app>

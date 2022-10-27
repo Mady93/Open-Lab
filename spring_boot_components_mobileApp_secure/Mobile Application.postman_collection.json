@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "c113f85f-f822-451e-89a5-11f85604d972",
+		"name": "Mobile Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BusinessUser",
+			"item": [
+				{
+					"name": "New Business User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIiLCJyb2xlcyI6WyJSRUFEIl0sImlhdCI6MTYyNjk2MTI3MywiZXhwIjoxNjI2OTY0ODczfQ.VIrSIj-m3aQY9QQy_q76vhujuFTes1i2IP6b4cDPoR0Ghykbu3_gLFbkjVCQVdWVMYSfsDGtTnjmEBG7580ijg",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"firstName\":\"Luigi\",\r\n\"lastName\":\"Rossi\",\r\n\"fiscalCode\":\"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/user/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Business User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIiLCJyb2xlcyI6WyJSRUFEIl0sImlhdCI6MTYyNjk2MTI3MywiZXhwIjoxNjI2OTY0ODczfQ.VIrSIj-m3aQY9QQy_q76vhujuFTes1i2IP6b4cDPoR0Ghykbu3_gLFbkjVCQVdWVMYSfsDGtTnjmEBG7580ijg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":396,\r\n\"firstName\":\"Mario2\",\r\n\"lastName\":\"Rossi2\",\r\n\"fiscalCode\":\"ASDFGHJ\",\r\n\"version\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/user/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Business User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":394,\r\n\"firstName\":\"Mario2\",\r\n\"lastName\":\"Rossi2\",\r\n\"fiscalCode\":\"ASDFGHJ\",\r\n\"version\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/user/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Business User by ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/user/findById/397",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"user",
+								"findById",
+								"397"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Business Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mobileapp/user/findUsers/3/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"user",
+								"findUsers",
+								"3",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Business Users by filter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"lastName\":\"Rossi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/user/findUsersByFilter/1/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"user",
+								"findUsersByFilter",
+								"1",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sim",
+			"item": [
+				{
+					"name": "New Sim",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"msisdn\":\"1234\",\r\n    \"imsi\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/sim/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"sim",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Sim",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIiLCJyb2xlcyI6WyJSRUFEIl0sImlhdCI6MTYyNzA0MDkyMywiZXhwIjoxNjI3MDQ0NTIzfQ.jwYcyyumTa7GitlHdF_TR8xB-RTtNUHplT9dES3fFKxCizkK0SXr_gCHM3HMEYQbEpOW6Ts4oJa91_efj-x0MA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":11,\r\n    \"version\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/sim/user/activate/395",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"sim",
+								"user",
+								"activate",
+								"395"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sim by user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIiLCJyb2xlcyI6WyJSRUFEIl0sImlhdCI6MTYyNzA0NTkzMiwiZXhwIjoxNjI3MDQ5NTMyfQ.Z_sFNHeSET2JHPLVSKnGoU37wrGlUuxu5uQLwQZxe1F9T85hXYMDUbVvGvUK6bsNJNMLrMMnILrAZBOrJw6yXA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/mobileapp/sim/user/395",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"sim",
+								"user",
+								"395"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sim activate product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIiLCJyb2xlcyI6WyJSRUFEIl0sImlhdCI6MTYyNzA0MDkyMywiZXhwIjoxNjI3MDQ0NTIzfQ.jwYcyyumTa7GitlHdF_TR8xB-RTtNUHplT9dES3fFKxCizkK0SXr_gCHM3HMEYQbEpOW6Ts4oJa91_efj-x0MA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/mobileapp/sim/activate/39/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"sim",
+								"activate",
+								"39",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sim deactivate product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIiLCJyb2xlcyI6WyJSRUFEIl0sImlhdCI6MTYyNzA0NTkzMiwiZXhwIjoxNjI3MDQ5NTMyfQ.Z_sFNHeSET2JHPLVSKnGoU37wrGlUuxu5uQLwQZxe1F9T85hXYMDUbVvGvUK6bsNJNMLrMMnILrAZBOrJw6yXA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost/mobileapp/sim/deactivate/39/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"sim",
+								"deactivate",
+								"39",
+								"11"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "New Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"GIGA EXTRA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/product/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"product",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":35,\r\n    \"name\":\"GIGA 2000\",\r\n    \"version\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/product/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"product",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mobileapp/product/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"product",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":38,\r\n    \"version\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/product/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"product",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Riconoscimento",
+			"item": [
+				{
+					"name": "Crea Validazione",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"2022-10-25T18:25:43.511Z\",\r\n    \"user\":{\r\n        \"id\":395,\r\n        \"firstName\":\"Mario2\",\r\n        \"lastName\":\"Rossi2\",\r\n        \"fiscalCode\":\"ASDFGHJ\",\r\n        \"version\":0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/mobileapp/validation/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"validation",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Validazione",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/mobileapp/validation/get/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"mobileapp",
+								"validation",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth Server",
+			"item": [
+				{
+					"name": "Auth",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"username\":\"John\",\r\n\"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:90/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "90",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

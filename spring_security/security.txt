@@ -1,0 +1,58 @@
+OTP + JWT (Progetto 15a + 15b)
+
+//all'autentificazione mi da l'otp poi alla pagina di login mi da il token
+Test authorization server:
+curl -XPOST -H "content-type: application/json" -d "{\"username\":\"danielle\",\"password\":\"12345\"}" http://localhost:90/user/add
+curl -XPOST -H "content-type: application/json" -d "{\"username\":\"danielle\",\"password\":\"12345\"}" http://localhost:90/user/auth
+curl -v -XPOST -H "content-type: application/json" -d "{\"username\":\"danielle\",\"code\":\"9333\"}" http://localhost:90/otp/check
+
+Test business logic server
+curl -v -H "username:danielle" -H "password:12345" http://localhost/login
+curl -v -H "username:danielle" -H "code:9333" http://localhost/login
+curl -v -H "Authorization:eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhbmllbGxlIn0.umxQ98tgEq8GKa7J2njjF7RMNtlWjIDfmwHQtAHGFmc" http://localhost/test
+
+
+OAUTH-2 (Progetto 17a + 17b)
+
+*** Password Grant Type: ***
+
+Il client deve inviare una request con:
+-grant_type with the value password
+-username and password, which are the user credentials
+-scope, which is the granted authority
+
+curl -v -XPOST -u client1:secret "http://localhost/oauth/token?grant_type=password&username=john&password=12345&scope=ADMIN"
+curl -H "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM1ODM0NjIsInVzZXJfbmFtZSI6IkpvaG4iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiNDNiNDFhZWYtOTlmMS00ZmM5LWEzMWQtZGQzNTRjNWJmNjM3IiwiY2xpZW50X2lkIjoiY2xpZW50MSIsInNjb3BlIjpbIkFETUlOIl19.5tAi-8Njzu_UzahZS122ejP1HirL7PVi6CY0LogORgM"  "http://localhost:90/helloUser"
+
+*** Code Grant Type: ***
+
+Nel browser
+http://localhost/oauth/authorize?response_type=code&client_id=client2&scope=MANAGER
+
+1)Pagina di login: inserimento user e password
+2)Il server ci chiede l'autorizzazione
+3)Diciamo si e veniamo rediretti
+4)Osserviamo il codice nell'url
+
+Usiamo il codice per il token:
+curl -v -XPOST -u client2:secret "http://localhost/oauth/token?grant_type=authorization_code&scope=MANAGER&code=ZvIFaJ"
+Chiamiamo un URL:
+curl -H "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjM1NjUwODAsInVzZXJfbmFtZSI6IkpvaG4iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiZmQwZjllNjgtNDkxNC00YWNlLTgyNzAtZWJlYjlhNTk4ZjVkIiwiY2xpZW50X2lkIjoiY2xpZW50MiIsInNjb3BlIjpbIk1BTkFHRVIiXX0.84qbtth-MU7UYc6_-OwA4Zw9LB2y59Q5e4Zx5cH-8Zw"  "http://localhost:90/helloUser"
+
+*** Client Credentials Grant Type: ***
+
+curl -v -XPOST -u client3:secret "http://localhost/oauth/token?grant_type=client_credentials&scope=USER"
+curl -H "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJVU0VSIl0sImV4cCI6MTY2MzU3MzcwNCwianRpIjoiY2Q5NGM3ZGUtZTFjNi00NGEzLWI5OTgtMTZhMTAzYzZjM2I2IiwiY2xpZW50X2lkIjoiY2xpZW50MyJ9.fzbOBwafTONc7y2aepjRKdM-eZTFyKFS8mcLUMC8ASg" "http://localhost:90/helloUser"
+
+
+REFRESH_TOKEN:
+
+Quando abbiamo bisogno di un nuovo token, il Client effettua una nuova chiamata con:
+- grant_type with value refresh_token.
+- refresh_token with the value of the refresh token.
+- client_id and client_secret with the client credentials.
+- scope, which defines the same granted authorities or less. If more granted authorities need to be authorized, a reauthentication is needed
+
+Esempio:
+curl -v -XPOST -u client1:secret "http://localhost/oauth/token?grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJKb2huIiwic2NvcGUiOlsiQURNSU4iXSwiYXRpIjoiZWQ4ZDgxYzQtMTZiMC00NGI5LWIyY2MtMmMzYmQwNzNmYjc4IiwiZXhwIjoxNjY2MTc0OTUxLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiYzY5NjNiMTEtZTk0Yi00MmY4LTk5YzQtY2U2Njc2ZTk4ZThhIiwiY2xpZW50X2lkIjoiY2xpZW50MSJ9.DykMuaJnmL_F1bufsplsPcKJ1yfbT3ChM08r26UG0oo&scope=ADMIN"
+curl -H "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJVU0VSIl0sImV4cCI6MTY2MzU3MzcwNCwianRpIjoiY2Q5NGM3ZGUtZTFjNi00NGEzLWI5OTgtMTZhMTAzYzZjM2I2IiwiY2xpZW50X2lkIjoiY2xpZW50MyJ9.fzbOBwafTONc7y2aepjRKdM-eZTFyKFS8mcLUMC8ASg" "http://localhost:90/helloUser"

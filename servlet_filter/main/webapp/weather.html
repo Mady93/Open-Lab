@@ -1,0 +1,70 @@
+<!--
+  Copyright (c) 2005 by David Bridgewater
+  All rights reserved.
+  
+  You may study, use, modify, and distribute this
+  software for any purpose provided that this
+  copyright notice appears in all copies.
+  
+  This software is provided without warranty
+  either expressed or implied.
+-->
+<html>
+<head>
+    <title>Weather Details</title>
+</head>
+<body>
+<form action="Weather" method="post">
+
+    <table>
+        <tr>
+            <th colspan="2">Observer Information</th>
+        </tr>
+        <tr>
+            <td>Observer Id:</td>
+            <td><input type="text" name="user" size="10" maxlength="5"/></td>
+        </tr>
+        <tr>
+            <td>Observer Pasword:</td>
+            <td><input type="password" name="password" size="10" maxlength="5"/></td>
+        </tr>
+        <tr>
+            <td>Hidden Info:</td>
+            <td><input type="hidden" name="hiddenInfo" value="Discrete Information"/></td>
+        </tr>
+    </table>
+    <h2>Weather Report</h2>
+    <p>Check all the types of weather you have observed today
+        <br/><input type="checkbox" name="weathertype" value="rain"/>Rain
+        <br/><input type="checkbox" name="weathertype" value="showers"/>Showers
+        <br/><input type="checkbox" name="weathertype" value="snow"/>Snow
+        <br/><input type="checkbox" name="weathertype" value="sun"/>Sun
+        <br/><input type="checkbox" name="weathertype" value="fog"/>Fog
+    </p>
+    <p>Choose today's highest recorded temperature
+        <br/><input type="radio" name="temp" value="vlow"/>Below zero degrees C
+        <br/><input type="radio" name="temp" value="low"/>0 to 10 degrees C
+        <br/><input type="radio" name="temp" value="med" checked/>11 to 20 degrees C
+        <br/><input type="radio" name="temp" value="high"/>Above 20 degrees C
+    </p>
+
+    <h2>Weather Station</h2>
+    <p>
+        <select name="stations">
+            <option value="ONE">Weather Station 1</option>
+            <option value="TWO" selected>Weather Station 2</option>
+            <option value="THREE">Weather Station 3</option>
+        </select>
+    </p>
+
+
+    <h2>Comments on the weather</h2>
+    <textarea name="comments" rows="5" cols="35">Use this area to type additional commments about the weather</textarea>
+    <p>
+        <input type="submit"/>
+    </p>
+
+</form>
+
+</body>
+</html>
